@@ -1,0 +1,1 @@
+(()=>{"use strict";(()=>{const e=document.getElementById("content"),t=document.createElement("h1"),n=document.createElement("img"),a=document.createElement("p");t.textContent="Kaiz's Kebab",n.src="assets/kebab.jpg",n.alt="Plate of kebab meat with tomatoes, chillies and pitta bread",a.textContent="Best kebab in town!",e.appendChild(t),e.appendChild(n),e.appendChild(a)})()})();
