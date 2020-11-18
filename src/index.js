@@ -7,36 +7,36 @@ loadInitalPage();
 
 const tabs = document.querySelectorAll('[data-tab-target]');
 
-tabs.foreach(tab => {
-    tab.addeventlistener('click', () => {
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
         // remove div#content
-        document.getelementbyid('content').remove();
+        document.getElementById('content').remove();
 
         // reset styles and remove active-tab class
-        tabs.foreach(tab => {
-            tab.style.csstext = 'width: 200px; display: grid; place-items: center; background-color: rgb(189, 195, 199); cursor: pointer;';
-            tab.classlist.remove('active-tab');
+        tabs.forEach(tab => {
+            tab.style.cssText = 'width: 200px; display: grid; place-items: center; background-color: rgb(189, 195, 199); cursor: pointer;';
+            tab.classList.remove('active-tab');
         });
 
-        tab.classlist.add('active-tab');
+        tab.classList.add('active-tab');
 
         // set active-tab styles
-        tab.style.backgroundcolor = '#fff'
-        tab.style.fontsize = '1.3rem';
+        tab.style.backgroundColor = '#fff'
+        tab.style.fontSize = '1.3rem';
 
         // load the target page
-        switch (tab.dataset.tabtarget) {
+        switch (tab.dataset.tabTarget) {
             case 'home':
-                loadhomepage();
+                loadHomePage();
                 break;
             case 'menu':
-                loadmenupage();
+                loadMenuPage();
                 break;
             case 'contact':
-                loadcontactpage();
+                loadContactPage();
                 break;
             default:
-                loadhomepage();
+                loadHomePage();
                 break;
         }
     });
