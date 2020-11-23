@@ -16,7 +16,6 @@ const loadHomePage = () => {
 
     // main image
     const mainImg = document.createElement('img');
-    mainImg.id = 'main-img';
     mainImg.src = 'assets/kebab.jpg';
     mainImg.alt = 'Plate of kebab meat with tomatoes, chillies and pitta bread';
 
