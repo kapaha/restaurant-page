@@ -59,7 +59,6 @@ const initPage = () => {
 
     document.body.prepend(mainContainer);
 
-
     // Media queries
     // Create a media condition that targets viewports at most 1000px wide
     const mediaQuery = window.matchMedia('(max-width: 1000px)');
