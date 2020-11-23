@@ -21,7 +21,7 @@ const loadHomePage = () => {
 
     // page subheading
     const pageSubheading = document.createElement('h2');
-    pageSubheading.textContent = 'Best kebab in town!';
+    pageSubheading.textContent = 'The best kebab in town!';
     pageSubheading.style.fontWeight = '400';
 
     contentDiv.appendChild(pageHeading);
