@@ -69,6 +69,8 @@ const menuTabLoad = () => {
 
     document.getElementById('container').appendChild(contentDiv);
 
+    // Media queries
+    // Create a media condition that targets viewports at most 1000px wide
     const maxWidthTabletQuery = window.matchMedia('(max-width: 1000px)');
     const maxWidthMobileQuery = window.matchMedia('(max-width: 400px)');
 
