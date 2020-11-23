@@ -1,8 +1,9 @@
-import loadHomeTab from './load-home-page';
+import loadHomePage from './load-home-page';
+import initMediaQuery from './media-query';
 
 const loadInitialPage = () => {
     initPage();
-    loadHomeTab();
+    loadHomePage();
 }
 
 const initPage = () => {
@@ -48,7 +49,7 @@ const initPage = () => {
         tab.style.backgroundColor = '#bdc3c7';
         tab.style.cursor = 'pointer';
         tab.style.transition = 'all 0.3s';
-        if (tab.classList.contains('active-tab')){
+        if (tab.classList.contains('active-tab')) {
             homeTab.style.backgroundColor = '#fff'
             homeTab.style.fontSize = '1.3rem';
         }
@@ -57,6 +58,22 @@ const initPage = () => {
     mainContainer.appendChild(tabBar);
 
     document.body.prepend(mainContainer);
+
+
+    // Media queries
+    // Create a media condition that targets viewports at most 1000px wide
+    const mediaQuery = window.matchMedia('(max-width: 1000px)');
+
+    function handleScreenWidthChange(e) {
+        // check if the media query is true
+        if (e.matches) {
+            mainContainer.style.margin = '0';
+        } else {
+            mainContainer.style.margin = '2rem auto';
+        }
+    }
+
+    initMediaQuery(mediaQuery, handleScreenWidthChange);
 };
 
 export default loadInitialPage;
