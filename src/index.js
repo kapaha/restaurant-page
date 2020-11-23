@@ -12,17 +12,19 @@ tabs.forEach(tab => {
         // remove div#content
         document.getElementById('content').remove();
 
+        // for all tabs
         // reset styles and remove active-tab class
         tabs.forEach(tab => {
-            tab.style.cssText = 'width: 200px; display: grid; place-items: center; background-color: rgb(189, 195, 199); cursor: pointer;';
+            tab.style.backgroundColor = 'rgb(189, 195, 199)';
+            tab.style.fontSize = '1rem';
             tab.classList.remove('active-tab');
         });
 
-        tab.classList.add('active-tab');
-
-        // set active-tab styles
+        // for clicked tab
+        // set active-tab styles and add active-tab class
         tab.style.backgroundColor = '#fff'
         tab.style.fontSize = '1.3rem';
+        tab.classList.add('active-tab');
 
         // load the target page
         switch (tab.dataset.tabTarget) {
