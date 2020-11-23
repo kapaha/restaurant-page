@@ -1,3 +1,5 @@
+import initMediaQuery from './media-query';
+
 const loadContactPage = () => {
     // div#content - used to hold other elements
     const contentDiv = document.createElement('div');
@@ -15,7 +17,7 @@ const loadContactPage = () => {
     // sections grid
     const sectionsGrid = document.createElement('div');
     sectionsGrid.style.display = 'grid';
-    sectionsGrid.style.gridGap = '1.5rem';
+    sectionsGrid.style.gridGap = '2rem';
     sectionsGrid.style.width = '50%';
     sectionsGrid.style.fontSize = '1.3rem';
 
@@ -75,7 +77,7 @@ const loadContactPage = () => {
     const sections = sectionsGrid.querySelectorAll('section');
     sections.forEach(section => {
         section.style.display = 'grid';
-        section.style.gridGap = '0.5rem';
+        section.style.gridGap = '1rem';
     });
 
     // h2 titles styles
@@ -88,6 +90,40 @@ const loadContactPage = () => {
     contentDiv.appendChild(sectionsGrid);
 
     document.getElementById('container').appendChild(contentDiv);
+
+    // Media queries
+    // Create a media condition that targets viewports at most 1000px wide
+    const maxWidthTabletQuery = window.matchMedia('(max-width: 1000px)');
+    const maxWidthMobileQuery = window.matchMedia('(max-width: 400px)');
+
+    function handleMaxWidthTablet(e) {
+        // check if the media query is true
+        if (e.matches) {
+            contentDiv.style.padding = '1rem';
+        } else {
+            contentDiv.style.padding = '2rem';
+        }
+    }
+
+    function handleMaxWidthMobile(e) {
+        // check if the media query is true
+        if (e.matches) {
+            pageHeading.style.fontSize = '2.5rem';
+            pageHeading.style.marginBottom = '1rem';
+            h2Titles.forEach(heading => heading.style.fontSize = '1.5rem');
+            sectionsGrid.style.width = '100%';
+            sectionsGrid.style.fontSize = '1rem';
+        } else {
+            pageHeading.style.fontSize = '3rem';
+            pageHeading.style.marginBottom = '2rem';
+            h2Titles.forEach(heading => heading.style.fontSize = '2rem');
+            sectionsGrid.style.width = '50%';
+            sectionsGrid.style.fontSize = '1.3rem';
+        }
+    }
+
+    initMediaQuery(maxWidthTabletQuery, handleMaxWidthTablet);
+    initMediaQuery(maxWidthMobileQuery, handleMaxWidthMobile);
 };
 
 export default loadContactPage;
