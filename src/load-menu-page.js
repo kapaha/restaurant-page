@@ -1,38 +1,16 @@
-import menu from './menu';
+import * as createElements from './create-elements';
 import initMediaQuery from './media-query';
+import menu from './menu';
 
 const menuTabLoad = () => {
-    // div#content - used to hold other elements
-    const contentDiv = document.createElement('div');
-    contentDiv.id = 'content';
-    contentDiv.style.display = 'grid';
-    contentDiv.style.placeItems = 'center';
-    contentDiv.style.padding = '2rem';
+    const contentDiv = createElements.createContentDiv();
+    const pageHeading = createElements.createPageHeading('Menu');
+    const sectionsGrid = createElements.createSectionsGrid();
 
-    // page heading
-    const pageHeading = document.createElement('h1');
-    pageHeading.textContent = 'Menu';
-    pageHeading.style.marginBottom = '2rem';
-    pageHeading.style.fontSize = '3rem';
-
-    // sections grid
-    const sectionsGrid = document.createElement('div');
-    sectionsGrid.style.display = 'grid';
-    sectionsGrid.style.gridGap = '2rem';
-    sectionsGrid.style.width = '50%';
-    sectionsGrid.style.fontSize = '1.3rem';
-
+    // create menu elements
     for (let category in menu) {
-        // category section
-        const categorySection = document.createElement('section');
-        categorySection.style.display = 'grid';
-        categorySection.style.gridGap = '1rem';
-
-        // category heading
-        const categoryHeading = document.createElement('h2');
-        categoryHeading.classList.add('category-heading');
-        categoryHeading.textContent = `${category}`;
-        categoryHeading.style.fontSize = '2rem';
+        const categorySection = createElements.createSection();
+        const categoryHeading = createElements.createSectionHeading(`${category}`);
 
         categorySection.appendChild(categoryHeading);
 
@@ -45,13 +23,11 @@ const menuTabLoad = () => {
             itemContainer.style.display = 'flex';
 
             // item name
-            const itemName = document.createElement('p');
-            itemName.textContent = item.name;
+            const itemName = createElements.createParagraph(item.name);
             itemName.style.width = '50%';
 
             // item price
-            const itemPrice = document.createElement('p');
-            itemPrice.textContent = `£${item.price}`;
+            const itemPrice = createElements.createParagraph(`£${item.price}`);
             itemPrice.style.width = '50%';
             itemPrice.style.textAlign = 'right';
             itemPrice.style.letterSpacing = '3px';
@@ -64,9 +40,9 @@ const menuTabLoad = () => {
         sectionsGrid.appendChild(categorySection);
     }
 
+    // append elements
     contentDiv.appendChild(pageHeading);
     contentDiv.appendChild(sectionsGrid);
-
     document.getElementById('container').appendChild(contentDiv);
 
     // Media queries
@@ -84,18 +60,16 @@ const menuTabLoad = () => {
     }
 
     function handleMaxWidthMobile(e) {
-        const categoryHeadings = document.querySelectorAll('.category-heading');
+        const categoryHeadings = document.querySelectorAll('.section-heading');
 
         // check if the media query is true
         if (e.matches) {
             pageHeading.style.fontSize = '2.5rem';
-            pageHeading.style.marginBottom = '1rem';
             categoryHeadings.forEach(heading => heading.style.fontSize = '1.5rem');
             sectionsGrid.style.width = '100%';
             sectionsGrid.style.fontSize = '1rem';
         } else {
             pageHeading.style.fontSize = '3rem';
-            pageHeading.style.marginBottom = '2rem';
             categoryHeadings.forEach(heading => heading.style.fontSize = '2rem');
             sectionsGrid.style.width = '50%';
             sectionsGrid.style.fontSize = '1.3rem';

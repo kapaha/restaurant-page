@@ -1,18 +1,11 @@
+import * as createElements from './create-elements';
 import initMediaQuery from './media-query';
 
 const loadHomePage = () => {
-    // div#content - used to hold other elements
-    const contentDiv = document.createElement('div');
-    contentDiv.id = 'content';
-    contentDiv.style.display = 'grid';
-    contentDiv.style.placeItems = 'center';
+    const contentDiv = createElements.createContentDiv();
     contentDiv.style.gridGap = '1rem';
-    contentDiv.style.padding = '2rem';
 
-    // page heading
-    const pageHeading = document.createElement('h1');
-    pageHeading.textContent = 'Kai\'s Kebab';
-    pageHeading.style.fontSize = '3rem';
+    const pageHeading = createElements.createPageHeading('Kai\'s Kebab');
 
     // main image
     const mainImg = document.createElement('img');
@@ -24,10 +17,10 @@ const loadHomePage = () => {
     pageSubheading.textContent = 'The best kebab in town!';
     pageSubheading.style.fontWeight = '400';
 
+    // append elements
     contentDiv.appendChild(pageHeading);
     contentDiv.appendChild(pageSubheading);
     contentDiv.appendChild(mainImg);
-
     document.getElementById('container').appendChild(contentDiv);
 
     // Media queries
@@ -48,7 +41,7 @@ const loadHomePage = () => {
         // check if the media query is true
         if (e.matches) {
             pageHeading.style.fontSize = '2.5rem';
-            pageSubheading.style.fontSize = '1rem';
+            pageSubheading.style.fontSize = '1.2rem';
         } else {
             pageHeading.style.fontSize = '3rem';
             pageSubheading.style.fontSize = '1.5rem';
