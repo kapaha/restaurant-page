@@ -24,18 +24,7 @@ const loadHomePage = () => {
     document.getElementById('container').appendChild(contentDiv);
 
     // Media queries
-    // Create a media condition that targets viewports at most 1000px wide
-    const maxWidthTabletQuery = window.matchMedia('(max-width: 1000px)');
-    const maxWidthMobileQuery = window.matchMedia('(max-width: 400px)');
-
-    function handleMaxWidthTablet(e) {
-        // check if the media query is true
-        if (e.matches) {
-            contentDiv.style.padding = '1rem';
-        } else {
-            contentDiv.style.padding = '2rem';
-        }
-    }
+    const maxWidthMobileQuery = window.matchMedia('(max-width: 420px)');
 
     function handleMaxWidthMobile(e) {
         // check if the media query is true
@@ -48,7 +37,6 @@ const loadHomePage = () => {
         }
     }
 
-    initMediaQuery(maxWidthTabletQuery, handleMaxWidthTablet);
     initMediaQuery(maxWidthMobileQuery, handleMaxWidthMobile);
 };
 

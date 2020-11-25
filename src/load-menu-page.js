@@ -46,16 +46,15 @@ const menuTabLoad = () => {
     document.getElementById('container').appendChild(contentDiv);
 
     // Media queries
-    // Create a media condition that targets viewports at most 1000px wide
     const maxWidthTabletQuery = window.matchMedia('(max-width: 1000px)');
-    const maxWidthMobileQuery = window.matchMedia('(max-width: 400px)');
+    const maxWidthMobileQuery = window.matchMedia('(max-width: 420px)');
 
     function handleMaxWidthTablet(e) {
         // check if the media query is true
         if (e.matches) {
-            contentDiv.style.padding = '1rem';
+            sectionsGrid.style.width = '75%';
         } else {
-            contentDiv.style.padding = '2rem';
+            sectionsGrid.style.width = '50%';
         }
     }
 
@@ -71,7 +70,7 @@ const menuTabLoad = () => {
         } else {
             pageHeading.style.fontSize = '3rem';
             categoryHeadings.forEach(heading => heading.style.fontSize = '2rem');
-            sectionsGrid.style.width = '50%';
+            sectionsGrid.style.width = '75%';
             sectionsGrid.style.fontSize = '1.3rem';
         }
     }
