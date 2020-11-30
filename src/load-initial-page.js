@@ -1,9 +1,10 @@
 import loadHomePage from './load-home-page';
-import initMediaQuery from './media-query';
+import { initMediaQueries } from './media-query';
 
 const loadInitialPage = () => {
     initPage();
     loadHomePage();
+    initMediaQueries();
 }
 
 const initPage = () => {
@@ -58,20 +59,6 @@ const initPage = () => {
     mainContainer.appendChild(tabBar);
 
     document.body.prepend(mainContainer);
-
-    // Media queries
-    const mediaQuery = window.matchMedia('(max-width: 1000px)');
-
-    function handleScreenWidthChange(e) {
-        // check if the media query is true
-        if (e.matches) {
-            mainContainer.style.margin = '0';
-        } else {
-            mainContainer.style.margin = '2rem auto';
-        }
-    }
-
-    initMediaQuery(mediaQuery, handleScreenWidthChange);
 };
 
 export default loadInitialPage;

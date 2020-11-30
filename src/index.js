@@ -2,6 +2,7 @@ import loadInitalPage from './load-initial-page';
 import loadHomePage from './load-home-page';
 import loadMenuPage from './load-menu-page';
 import loadContactPage from './load-contact-page';
+import { checkMediaQueries } from './media-query';
 
 loadInitalPage();
 
@@ -41,5 +42,7 @@ tabs.forEach(tab => {
                 loadHomePage();
                 break;
         }
+
+        checkMediaQueries();
     });
 });

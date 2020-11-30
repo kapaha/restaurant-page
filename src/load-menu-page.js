@@ -1,5 +1,4 @@
 import * as createElements from './create-elements';
-import initMediaQuery from './media-query';
 import menu from './menu';
 
 const menuTabLoad = () => {
@@ -44,39 +43,6 @@ const menuTabLoad = () => {
     contentDiv.appendChild(pageHeading);
     contentDiv.appendChild(sectionsGrid);
     document.getElementById('container').appendChild(contentDiv);
-
-    // Media queries
-    const maxWidthTabletQuery = window.matchMedia('(max-width: 1000px)');
-    const maxWidthMobileQuery = window.matchMedia('(max-width: 420px)');
-
-    function handleMaxWidthTablet(e) {
-        // check if the media query is true
-        if (e.matches) {
-            sectionsGrid.style.width = '75%';
-        } else {
-            sectionsGrid.style.width = '50%';
-        }
-    }
-
-    function handleMaxWidthMobile(e) {
-        const categoryHeadings = document.querySelectorAll('.section-heading');
-
-        // check if the media query is true
-        if (e.matches) {
-            pageHeading.style.fontSize = '2.5rem';
-            categoryHeadings.forEach(heading => heading.style.fontSize = '1.5rem');
-            sectionsGrid.style.width = '100%';
-            sectionsGrid.style.fontSize = '1rem';
-        } else {
-            pageHeading.style.fontSize = '3rem';
-            categoryHeadings.forEach(heading => heading.style.fontSize = '2rem');
-            sectionsGrid.style.width = '75%';
-            sectionsGrid.style.fontSize = '1.3rem';
-        }
-    }
-
-    initMediaQuery(maxWidthTabletQuery, handleMaxWidthTablet);
-    initMediaQuery(maxWidthMobileQuery, handleMaxWidthMobile);
 };
 
 export default menuTabLoad;

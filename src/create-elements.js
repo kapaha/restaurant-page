@@ -17,6 +17,9 @@ const createContentDiv = () => {
 const createPageHeading = (text) => {
     const pageHeading = document.createElement('h1');
 
+    // properties
+    pageHeading.id = 'page-heading';
+
     // text
     pageHeading.textContent = text;
 
@@ -28,6 +31,9 @@ const createPageHeading = (text) => {
 
 const createSectionsGrid = () => {
     const sectionsGrid = document.createElement('div');
+
+    // properties
+    sectionsGrid.classList.add('sections-grid');
 
     // styles
     sectionsGrid.style.display = 'grid';
